@@ -8,6 +8,7 @@ Since I had to do this task both in Windows and Linux, I decided to write this u
 **Build**
 
 ``dotnet publish -r linux-x64`` Linux
+
 ``dotnet publish -r win-x64``   Windows
 
 **Usage**
