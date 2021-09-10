@@ -16,3 +16,9 @@ Since I had to do this task both in Windows and Linux, I decided to write this u
 ``PassCensor -H``  Help
 
 ``PassCensor /path/to/inputfile /path/to/outputfile```
+
+**Download compiled binaries**
+
+[Linux x64](https://github.com/0xcomposure/PassCensor/releases/download/PassCesnor/PassCensor)
+
+[Windows x64](https://github.com/0xcomposure/PassCensor/releases/download/PassCesnor/PassCensor.exe)
