@@ -30,20 +30,42 @@ namespace PassCensor
                 {
                     while(!sr.EndOfStream)
                     {
-                        string pass = sr.ReadLine();
+                        string cred = sr.ReadLine();
+                        string user = string.Empty;
+                        string pass = string.Empty;
+
+                        if (cred.Contains(':'))
+                        {
+                            user = cred.Substring(0, cred.IndexOf(":", StringComparison.Ordinal));
+                            pass = cred.Substring(cred.IndexOf(":") + 1);
+                        }
+                        else
+                        {
+                            pass = cred;
+                        }
+
                         char[] ch = pass.ToCharArray();
                         for(int i = 1; i < pass.Length - 1; i++)
                         {
                             ch[i] = '*';
                         }
                         pass = new string(ch);
-                        censoredPasswords.Add(pass);
+                        
+                        if (String.IsNullOrEmpty(user))
+                        {
+                            censoredPasswords.Add(pass);
+                        }
+                        else
+                        {
+                            censoredPasswords.Add(user + ":" + pass);
+                        }
                     }
                 }
 
                 using (StreamWriter outputFile = new StreamWriter(output))
                 {
                     censoredPasswords.ForEach(line => outputFile.WriteLine(line));
+                    Console.WriteLine("Output saved at " + output);
                 }
             }
             else {
